@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShoppingBag, 
-  Brain, 
-  Shield, 
-  Heart, 
-  ArrowRight, 
+import {
+  ShoppingBag,
+  Brain,
+  Shield,
+  Heart,
+  ArrowRight,
   ChevronDown,
   Star,
   Clock,
@@ -119,7 +120,6 @@ export default function LandingPage() {
               <span className="text-xl font-bold text-white">Spendly</span>
             </Link>
           </div>
-
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/about" className="text-white hover:text-indigo-200 transition-colors">
               About
@@ -134,21 +134,15 @@ export default function LandingPage() {
               Sign In
             </Link>
           </div>
-
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-indigo-200 transition-colors"
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-
         {isMenuOpen && (
           <div className="md:hidden bg-white rounded-lg mt-2 py-2 shadow-lg">
             <Link
@@ -189,7 +183,6 @@ export default function LandingPage() {
             Fulfill your shopping urges in a safe, controlled environment
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {loading ? (
             [...Array(3)].map((_, i) => (
@@ -257,7 +250,6 @@ export default function LandingPage() {
             </div>
           )}
         </div>
-
         <div className="mt-12 text-center">
           <button
             onClick={() => navigate('/auth')}
@@ -273,129 +265,80 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-600 to-indigo-800">
+      <Helmet>
+        <title>Spendly - The Best Tool for Shopaholics!</title>
+        <meta name="description" content="Spendly helps shopaholics manage their shopping lists and find the best deals." />
+        <meta name="keywords" content="shopping, deals, shopaholics, spendly" />
+        <meta name="author" content="Your Name" />
+        <link rel="canonical" href="https://www.yourwebsite.com/" />
+      </Helmet>
       {renderNavbar()}
-
       <div className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <AnimatePresence>
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={`cart-${i}`}
-                initial={{ 
-                  opacity: 0,
-                  x: -200,
-                  y: Math.random() * window.innerHeight,
-                  scale: 0.5
-                }}
-                animate={{ 
+                initial={{ opacity: 0, x: -200, y: Math.random() * window.innerHeight, scale: 0.5 }}
+                animate={{
                   opacity: [0, 1, 1, 0],
                   x: window.innerWidth + 200,
-                  y: [
-                    Math.random() * window.innerHeight,
-                    Math.random() * window.innerHeight,
-                    Math.random() * window.innerHeight
-                  ],
+                  y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight, Math.random() * window.innerHeight],
                   scale: [0.5, 1.5, 1.5, 0.5],
                   rotate: [0, 360]
                 }}
-                transition={{ 
-                  duration: 15 + Math.random() * 10,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
+                transition={{ duration: 15 + Math.random() * 10, repeat: Infinity, ease: "linear" }}
                 className="absolute text-white/30"
               >
                 <ShoppingCart className="h-12 w-12" />
               </motion.div>
             ))}
-
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={`dollar-${i}`}
-                initial={{ 
-                  opacity: 0,
-                  x: Math.random() * window.innerWidth,
-                  y: window.innerHeight + 100,
-                  scale: 0.5
-                }}
-                animate={{ 
+                initial={{ opacity: 0, x: Math.random() * window.innerWidth, y: window.innerHeight + 100, scale: 0.5 }}
+                animate={{
                   opacity: [0, 1, 1, 0],
-                  x: [
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerWidth
-                  ],
+                  x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth, Math.random() * window.innerWidth],
                   y: -200,
                   scale: [0.5, 2, 2, 0.5],
                   rotate: [-30, 30]
                 }}
-                transition={{ 
-                  duration: 12 + Math.random() * 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                transition={{ duration: 12 + Math.random() * 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute text-yellow-400/40"
               >
                 <DollarSign className="h-10 w-10" />
               </motion.div>
             ))}
-
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={`coin-${i}`}
-                initial={{ 
-                  opacity: 0,
-                  x: window.innerWidth + 200,
-                  y: Math.random() * window.innerHeight,
-                  scale: 0.5
-                }}
-                animate={{ 
+                initial={{ opacity: 0, x: window.innerWidth + 200, y: Math.random() * window.innerHeight, scale: 0.5 }}
+                animate={{
                   opacity: [0, 1, 1, 0],
                   x: -200,
-                  y: [
-                    Math.random() * window.innerHeight,
-                    Math.random() * window.innerHeight,
-                    Math.random() * window.innerHeight
-                  ],
+                  y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight, Math.random() * window.innerHeight],
                   scale: [0.5, 1.8, 1.8, 0.5],
                   rotate: [0, 720]
                 }}
-                transition={{ 
-                  duration: 18 + Math.random() * 12,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
+                transition={{ duration: 18 + Math.random() * 12, repeat: Infinity, ease: "linear" }}
                 className="absolute text-yellow-500/30"
               >
                 <Coins className="h-14 w-14" />
               </motion.div>
             ))}
-
             {[...Array(4)].map((_, i) => (
               <motion.div
                 key={`smile-${i}`}
-                initial={{ 
-                  opacity: 0,
-                  x: Math.random() * window.innerWidth,
-                  y: -200,
-                  scale: 0.5
-                }}
-                animate={{ 
+                initial={{ opacity: 0, x: Math.random() * window.innerWidth, y: -200, scale: 0.5 }}
+                animate={{
                   opacity: [0, 1, 1, 0],
-                  x: [
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerWidth
-                  ],
+                  x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth, Math.random() * window.innerWidth],
                   y: window.innerHeight + 200,
                   scale: [0.5, 1.6, 1.6, 0.5],
                   rotate: [-20, 20, -20]
                 }}
-                transition={{ 
-                  duration: 20 + Math.random() * 10,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                transition={{ duration: 20 + Math.random() * 10, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute text-white/30"
               >
                 <Smile className="h-12 w-12" />
@@ -403,33 +346,16 @@ export default function LandingPage() {
             ))}
           </AnimatePresence>
         </div>
-
         <motion.div
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl opacity-10"
         />
         <motion.div
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl opacity-10"
         />
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -448,7 +374,6 @@ export default function LandingPage() {
             <br />
             again
           </motion.h1>
-
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -458,7 +383,6 @@ export default function LandingPage() {
             We help you develop mindful shopping habits while saving money. 
             Track your impulses, earn rewards, and make smarter financial decisions.
           </motion.p>
-
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -479,7 +403,6 @@ export default function LandingPage() {
               Learn More
             </button>
           </motion.div>
-
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -492,7 +415,6 @@ export default function LandingPage() {
             <span className="hidden sm:inline">•</span>
             <span>✓ No Credit Card Required</span>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -503,14 +425,12 @@ export default function LandingPage() {
           </motion.div>
         </motion.div>
       </div>
-
       <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
             <p className="text-xl text-gray-600">Your journey to mindful shopping starts here</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-indigo-50 rounded-xl p-8 text-center">
               <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -521,7 +441,6 @@ export default function LandingPage() {
                 Identify emotional triggers and develop awareness of your shopping patterns
               </p>
             </div>
-
             <div className="bg-indigo-50 rounded-xl p-8 text-center">
               <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-8 w-8 text-indigo-600" />
@@ -531,7 +450,6 @@ export default function LandingPage() {
                 Make purchase decisions in a risk-free environment with virtual money
               </p>
             </div>
-
             <div className="bg-indigo-50 rounded-xl p-8 text-center">
               <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Trophy className="h-8 w-8 text-indigo-600" />
@@ -544,16 +462,13 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-
       {renderRecentPurchases()}
-
       <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
             <p className="text-xl text-gray-600">Join thousands of satisfied Spendly users</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-indigo-50 rounded-xl p-8">
@@ -567,14 +482,12 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-
       <div className="bg-gray-50 py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-gray-600">Everything you need to know about Spendly</p>
           </div>
-
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm">
@@ -599,7 +512,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-
       <div className="bg-indigo-600 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-8">
@@ -638,7 +550,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -652,7 +563,6 @@ export default function LandingPage() {
                 decisions in a safe, supportive environment.
               </p>
             </div>
-
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Quick Links
@@ -675,7 +585,6 @@ export default function LandingPage() {
                 </li>
               </ul>
             </div>
-
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Support
@@ -699,7 +608,6 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-
           <div className="border-t border-gray-200 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="flex items-center space-x-2 text-gray-500 text-sm">
