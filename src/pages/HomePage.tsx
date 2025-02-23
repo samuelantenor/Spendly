@@ -4,6 +4,7 @@ import ProductGrid from '../components/ProductGrid';
 import CategoryFilter from '../components/CategoryFilter';
 import { Search, Sparkles, Clock, Siren as Fire, TrendingUp, Package } from 'lucide-react';
 import type { Product } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -12,6 +13,7 @@ export default function HomePage() {
   const [trendingProducts, setTrendingProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
@@ -184,7 +186,8 @@ export default function HomePage() {
             {flashDeals.map(deal => (
               <div
                 key={deal.id}
-                className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+                onClick={() => navigate(`/product/${deal.id}`)}
               >
                 <div className="relative">
                   <img
