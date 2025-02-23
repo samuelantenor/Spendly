@@ -30,7 +30,7 @@ export default function AuthForm() {
         const { error: magicLinkError } = await supabase.auth.signInWithOtp({
           email,
           options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback`
+            emailRedirectTo: `${window.location.origin}/home`
           }
         });
 
@@ -61,7 +61,7 @@ export default function AuthForm() {
             email,
             password,
             options: {
-              emailRedirectTo: `${window.location.origin}/auth/callback`
+              emailRedirectTo: `${window.location.origin}/home`
             }
           });
           
